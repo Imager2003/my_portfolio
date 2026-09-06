@@ -1,25 +1,14 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 
-
-// =========================
-// MOBILE NAVIGATION
-// =========================
-
 toggle?.addEventListener('click', () => {
-
   const open = nav.classList.toggle('open');
 
   toggle.setAttribute(
     'aria-expanded',
     String(open)
   );
-
 });
-
-
-// Close mobile navigation
-// when a navigation link is clicked
 
 document.querySelectorAll('.nav a').forEach(link => {
 
@@ -37,12 +26,7 @@ document.querySelectorAll('.nav a').forEach(link => {
 });
 
 
-// =========================
-// SCROLL REVEAL
-// =========================
-
 const observer = new IntersectionObserver(
-
   (entries) => {
 
     entries.forEach(entry => {
@@ -58,18 +42,12 @@ const observer = new IntersectionObserver(
     });
 
   },
-
   {
     threshold: 0.12
   }
-
 );
 
 
 document
   .querySelectorAll('.reveal')
-  .forEach(element => {
-
-    observer.observe(element);
-
-  });
+  .forEach(el => observer.observe(el));
