@@ -1,22 +1,69 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
 toggle?.addEventListener('click', () => {
+
   const open = nav.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', String(open));
+
+  toggle.setAttribute(
+    'aria-expanded',
+    String(open)
+  );
+
 });
+
+
+/* Close mobile menu after clicking a navigation link */
 
 document.querySelectorAll('.nav a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
+
+  link.addEventListener('click', () => {
+
+    nav.classList.remove('open');
+
+    toggle?.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+
+  });
+
 });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add('visible');
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+
+document
+  .querySelectorAll('.reveal')
+  .forEach(element => {
+    observer.observe(element);
+  });
