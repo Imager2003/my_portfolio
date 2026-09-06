@@ -2,25 +2,26 @@ const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 
 
-/* =========================
-   MOBILE NAVIGATION
-========================= */
+// =========================
+// MOBILE NAVIGATION
+// =========================
 
 toggle?.addEventListener('click', () => {
 
-  const isOpen = nav.classList.toggle('open');
+  const open = nav.classList.toggle('open');
 
   toggle.setAttribute(
     'aria-expanded',
-    String(isOpen)
+    String(open)
   );
 
 });
 
 
-/* Close menu after selecting a navigation item */
+// Close mobile navigation
+// when a navigation link is clicked
 
-document.querySelectorAll('.nav a').forEach((link) => {
+document.querySelectorAll('.nav a').forEach(link => {
 
   link.addEventListener('click', () => {
 
@@ -36,14 +37,15 @@ document.querySelectorAll('.nav a').forEach((link) => {
 });
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+// =========================
+// SCROLL REVEAL
+// =========================
 
 const observer = new IntersectionObserver(
+
   (entries) => {
 
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
 
       if (entry.isIntersecting) {
 
@@ -56,15 +58,17 @@ const observer = new IntersectionObserver(
     });
 
   },
+
   {
     threshold: 0.12
   }
+
 );
 
 
 document
   .querySelectorAll('.reveal')
-  .forEach((element) => {
+  .forEach(element => {
 
     observer.observe(element);
 
