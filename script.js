@@ -8,19 +8,19 @@ const nav = document.querySelector('.nav');
 
 toggle?.addEventListener('click', () => {
 
-  const open = nav.classList.toggle('open');
+  const isOpen = nav.classList.toggle('open');
 
   toggle.setAttribute(
     'aria-expanded',
-    String(open)
+    String(isOpen)
   );
 
 });
 
 
-/* Close mobile menu after clicking a navigation link */
+/* Close menu after selecting a navigation item */
 
-document.querySelectorAll('.nav a').forEach(link => {
+document.querySelectorAll('.nav a').forEach((link) => {
 
   link.addEventListener('click', () => {
 
@@ -43,7 +43,7 @@ document.querySelectorAll('.nav a').forEach(link => {
 const observer = new IntersectionObserver(
   (entries) => {
 
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
 
       if (entry.isIntersecting) {
 
@@ -64,6 +64,8 @@ const observer = new IntersectionObserver(
 
 document
   .querySelectorAll('.reveal')
-  .forEach(element => {
+  .forEach((element) => {
+
     observer.observe(element);
+
   });
